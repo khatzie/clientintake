@@ -11,7 +11,7 @@ import SwiftUI
 struct ClientIntakeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SubmissionListView()
         }
     }
 }

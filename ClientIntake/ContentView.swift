@@ -7,15 +7,23 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+
+    init() {
+        do {
+            let loader = SubmissionLoader()
+            let submissions = try loader.load()
+
+            print("Loaded \(submissions.count) submissions")
+        } catch {
+            print(error)
         }
-        .padding()
+    }
+
+    var body: some View {
+        Text("Client Intake")
     }
 }
 
