@@ -1,4 +1,4 @@
-# clientintake
+# Client Intake
 
 A SwiftUI application for reviewing and managing client inquiry submissions loaded from a local JSON data source.
 
