@@ -108,3 +108,27 @@ Please focus on:
 - Reviewed-state workflow
 - Error handling and resilience
 - Overall implementation decisions and trade-offs
+
+## Sreenshots and Screen Recording
+#### Screen Recording
+
+[View Screen Recording](./Screenshots/Screen%20Recording.mov)
+
+#### Screenshots
+
+| Load Data                                             | View Details                                             | No Results Found                                               |
+| ----------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="./Screenshots/Load%20Data.png" width="250"> | <img src="./Screenshots/View%20Details.png" width="250"> | <img src="./Screenshots/No%20Results%20Found.png" width="250"> |
+
+| Missing JSON File                                               | Empty JSON File                                               | Incorrect JSON File                                               |
+| --------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------- |
+| <img src="./Screenshots/Missing%20JSON%20File.png" width="250"> | <img src="./Screenshots/Empty%20JSON%20File.png" width="250"> | <img src="./Screenshots/Incorrect%20JSON%20File.png" width="250"> |
+
+
+
+
+
+
+
+
+
