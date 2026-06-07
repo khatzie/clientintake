@@ -273,9 +273,9 @@ Planning and requirements review: 60 minutes
 
 Core Implementations (Models, decoding, normalization, List Screen and Search, View Details Screen): 110 minutes
 
-Testing and edge cases: 20 minutes
+Testing and edge cases: 15 minutes
 
-README, screenshots, cleanup: 50 minutes
+README, screenshots, cleanup: 55 minutes
  
 ---
  
