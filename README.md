@@ -30,7 +30,7 @@ No additional configuration is required.
 - Load submissions from bundled JSON
 - Display submissions in a searchable list
 - Search by:
-  - Applicant name
+  - Name
   - Email address
   - Service
   - Status
