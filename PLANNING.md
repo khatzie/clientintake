@@ -180,22 +180,23 @@ App
 ├── Models
 │   ├── RawSubmission.swift
 │   ├── Submission.swift
-│   └── SubmissionStatus.swift
+│   ├── SubmissionStatus.swift
+│   └── ViewState.swift
 │
 ├── Services
 │   └── SubmissionLoader.swift
 │
+├── Resources
+│   └── submissions.json
+│
 ├── ViewModels
-│   ├── SubmissionListViewModel.swift
-│   └── SubmissionDetailViewModel.swift
+│   └── SubmissionListViewModel.swift
 │
 ├── Views
-│   ├── SubmissionListView.swift
-│   ├── SubmissionRowView.swift
+│   ├── StateViews.swift
 │   ├── SubmissionDetailView.swift
-│   ├── LoadingView.swift
-│   ├── EmptyStateView.swift
-│   └── ErrorStateView.swift
+│   ├── SubmissionListView.swift
+│   └── SubmissionRowView.swift
 │
 └── Persistence
     └── ReviewedStore.swift

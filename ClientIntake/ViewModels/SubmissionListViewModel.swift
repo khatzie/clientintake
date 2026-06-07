@@ -17,8 +17,6 @@ final class SubmissionListViewModel: ObservableObject {
     @Published private(set) var reviewedIDs: Set<String> = []
     @Published var state: ViewState = .loading
     
-    
-    
     private let loader = SubmissionLoader()
     private let reviewedStore = ReviewedStore()
     
