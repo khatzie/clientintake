@@ -189,6 +189,10 @@ App
 ├── Resources
 │   └── submissions.json
 │
+├── Utilities
+│   ├── DateParser.swift
+│   └── String+Extension.swift
+│
 ├── ViewModels
 │   └── SubmissionListViewModel.swift
 │
@@ -240,31 +244,76 @@ Manual tests are required. Automated tests are optional.
  
 | Test Case | Steps | Expected Result | Tested? |
 |---|---|---|---|
-|  |  |  | Yes / No |
- 
+| Load valid data | Launch app | Submissions display successfully | Yes|
+| Missing fields | Open malformed record | Fallback values displayed | Yes|
+| Invalid dates | View record with invalid date | Date unavailable shown | Yes|
+| Search by name | Enter name in search | Matching records displayed | Yes|
+| Search by email | Enter email in search | Matching records displayed | Yes|
+| Search by service | Enter service in search | Matching records displayed | Yes|
+| Search by status | Enter status in search | Matching records displayed | Yes|
+| Empty search | Search invalid term | Empty state displayed | Yes|
+| View details | Select submission | Detail screen opens | Yes|
+| Mark reviewed | Tap reviewed action | State updates correctly | Yes|
+| Relaunch app | Restart app | Reviewed state persists | Yes|
+| Duplicate IDs | Load duplicate records | App remains stable | Yes|
+| Missing Fields | Remove optional fields such as name, email, or phone from a submission | Application remains stable and displays fallback values | Yes|
+| Invalid Status | Use an unknown status value in the JSON | Status is normalized to "Unknown" | Yes|
+| Load Submissions | Launch the application with a valid submissions.json file | All submissions are displayed successfully | Yes|
+| No Search Results | Enter a search term that does not exist in the dataset | "No Results" state is displayed | Yes|
+| Empty State | Replace the JSON content with [] | "No Submissions" state is displayed | Yes|
+| Missing JSON File | Rename or remove submissions.json from the bundle | Error state is displayed | Yes|
+| Invalid JSON | Corrupt the JSON file contents | Error state is displayed | Yes|
+
 ---
  
 ## 6. Timebox Plan
  
-Briefly explain how you plan to spend the 3 to 4 hours.
+Planning and requirements review: 60 minutes
+
+Core Implementations (Models, decoding, normalization, List Screen and Search, View Details Screen): 110 minutes
+
+Testing and edge cases: 20 minutes
+
+README, screenshots, cleanup: 50 minutes
  
 ---
  
 ## 7. Risks, Trade-offs, and Follow-up
  
-List important risks, shortcuts, or trade-offs. Also answer:
-- What did you intentionally skip?
-- What would you improve with more time?
-- What would you ask the client before building this for production?
-- If you used AI tools, how did you use them and how did you validate output?
- 
+Trade-offs:
+- UserDefaults used instead of a database
+- Local-only reviewed state
+- Duplicate detection not implemented
+
+What did you intentionally skip?
+- Duplicate submission detection
+- Advanced sorting options
+- Complex persistence layer
+- Backend integration
+
+What would you improve with more time?
+- Duplicate detection
+- Advanced filtering
+- Core Data persistence
+- Analytics and audit history
+- Better accessibility coverage
+
+What would you ask the client before building this for production?
+- Submission volume expectations
+- Review workflow requirements
+- Status lifecycle definitions
+- Authentication requirements
+- Multi-user synchronization requirements
+
+If you used AI tools, how did you use them and how did you validate output?
+
+AI tools were used for brainstorming architecture approaches, reviewing implementation ideas, identifying edge cases, and documents grammar checking. All generated suggestions were reviewed manually, adapted to project requirements, and validated through testing.
+
 ---
  
 ## 8. Iterations
  
 | Change | Reason |
 |---|---|
-|  |  |
- 
-If there were no major changes, write: N/A, no major plan changes.
+| N/A | No major plan changes |
 
