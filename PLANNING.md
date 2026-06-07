@@ -211,6 +211,7 @@ States:
 - Loading
 - Loaded
 - Empty
+- No Results
 - Error
 
 Flow:
