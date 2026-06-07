@@ -313,8 +313,11 @@ AI tools were used for brainstorming architecture approaches, reviewing implemen
 ---
  
 ## 8. Iterations
- 
-| Change | Reason |
-|---|---|
-| N/A | No major plan changes |
+
+| Change                                                                   | Reason                                                                                                                                           |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Replaced message search with service search | Service information provides a more predictable and useful search experience, allowing reviewers to quickly find submissions related to a specific service offering. |
+| Added search by status in addition to name and email                     | This improves discoverability and allows reviewers to quickly find submissions in a specific status.                                             |
+| Introduced a reusable EmptyStateView                                     | Reduced duplication and provided a consistent experience for empty, and no-results states.                                                |
+
 
