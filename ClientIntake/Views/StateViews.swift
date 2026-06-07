@@ -14,10 +14,16 @@ struct LoadingView: View {
 }
 
 struct EmptyStateView: View {
+
+    let title: String
+    let systemImage: String
+    let description: String?
+
     var body: some View {
         ContentUnavailableView(
-            "No Submissions",
-            systemImage: "tray"
+            title,
+            systemImage: systemImage,
+            description: description.map { Text($0) }
         )
     }
 }

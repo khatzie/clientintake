@@ -18,6 +18,11 @@ struct Submission: Identifiable {
     let submittedDate: Date?
     let formVersion: String?
     
+    // Set is reviewed if status on JSON File is reviewed
+    var isReviewed: Bool {
+        status == .reviewed
+    }
+    
     init(raw: RawSubmission) {
         self.id = raw.id?.value.trimmingCharacters(in: .whitespacesAndNewlines)
             .nonEmpty ?? UUID().uuidString

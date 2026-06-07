@@ -21,30 +21,42 @@ struct SubmissionListView: View {
                     LoadingView()
                     
                 case .empty:
-                    EmptyStateView()
+                    EmptyStateView(
+                        title: "No Submissions",
+                        systemImage: "tray",
+                        description: "No submissions were found."
+                    )
                     
                 case .error(let message):
                     ErrorStateView(message: message)
                     
                 case .loaded:
-                    List(viewModel.filteredSubmissions) { submission in
-                        
-                        NavigationLink {
-                            SubmissionDetailView(
-                                submission: submission,
-                                isReviewed: viewModel.reviewedIDs.contains(submission.id)
-                            )
-                        } label: {
-                            SubmissionRowView(
-                                submission: submission,
-                                isReviewed: viewModel.reviewedIDs.contains(submission.id)
-                            )
+                    if viewModel.filteredSubmissions.isEmpty {
+                        EmptyStateView(
+                            title: "No Results",
+                            systemImage: "magnifyingglass",
+                            description: "Try a different search term."
+                        )
+                    } else {
+                        List(viewModel.filteredSubmissions) { submission in
+                            
+                            NavigationLink {
+                                SubmissionDetailView(
+                                    submission: submission,
+                                    isReviewed: viewModel.reviewedIDs.contains(submission.id)
+                                )
+                            } label: {
+                                SubmissionRowView(
+                                    submission: submission,
+                                    isReviewed: viewModel.reviewedIDs.contains(submission.id)
+                                )
+                            }
                         }
                     }
-                    .searchable(text: $viewModel.searchText)
                 }
             }
             .navigationTitle("Client Intake")
+            .searchable(text: $viewModel.searchText)
         }
         .task {
             viewModel.loadSubmissions()

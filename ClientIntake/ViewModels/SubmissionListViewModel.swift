@@ -28,7 +28,7 @@ final class SubmissionListViewModel: ObservableObject {
         return submissions.filter {
             $0.name.localizedCaseInsensitiveContains(searchText) ||
             $0.email.localizedCaseInsensitiveContains(searchText) ||
-            $0.message.localizedCaseInsensitiveContains(searchText) ||
+            $0.service.localizedCaseInsensitiveContains(searchText) ||
             $0.status.displayName.localizedCaseInsensitiveContains(searchText)
         }
     }
