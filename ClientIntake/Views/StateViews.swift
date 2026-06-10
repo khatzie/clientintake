@@ -39,3 +39,25 @@ struct ErrorStateView: View {
         )
     }
 }
+
+struct OfflineStateView: View {
+    let retryAction: () -> Void
+
+    var body: some View {
+        ContentUnavailableView {
+            Label(
+                "No Internet Connection",
+                systemImage: "wifi.slash"
+            )
+        } description: {
+            Text(
+                "Please check your internet connection and try again."
+            )
+        } actions: {
+            Button("Retry") {
+                retryAction()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
+}

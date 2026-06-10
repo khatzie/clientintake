@@ -11,5 +11,6 @@ enum ViewState {
     case loading
     case loaded
     case empty
+    case offline
     case error(String)
 }

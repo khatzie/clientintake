@@ -10,8 +10,10 @@ import SwiftUI
 struct SubmissionDetailView: View {
 
     let submission: Submission
-    let isReviewed: Bool
-    private let reviewedStore = ReviewedStore()
+//    let isReviewed: Bool
+//    private let reviewedStore = ReviewedStore()
+    
+    @ObservedObject var viewModel: SubmissionListViewModel
 
     var body: some View {
         List {
@@ -23,18 +25,30 @@ struct SubmissionDetailView: View {
 
             Section("Service") {
                 Text(submission.service)
-                Text(submission.status.displayName)
+                Text(!viewModel.reviewedIDs.contains(submission.id) ? submission.status.displayName :  "Reviewed")
             }
 
             Section("Message") {
                 Text(submission.message)
             }
             
-            if !isReviewed {
-                Button("Mark as Reviewed") {
-                    reviewedStore.markReviewed(
-                        id: submission.id
+            Section("Date Submitted") {
+                if let submittedDate = submission.submittedDate {
+                    Text(
+                        submittedDate.formatted(
+                            date: .abbreviated,
+                            time: .shortened
+                        )
                     )
+                } else {
+                    Text("Not Available")
+                        .foregroundStyle(.secondary)
+                }
+            }
+            
+            if !viewModel.reviewedIDs.contains(submission.id) {
+                Button("Mark as Reviewed") {
+                    viewModel.markReviewed(submission)
                 }
             }
             

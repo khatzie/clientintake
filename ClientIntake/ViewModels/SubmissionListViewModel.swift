@@ -17,7 +17,8 @@ final class SubmissionListViewModel: ObservableObject {
     @Published private(set) var reviewedIDs: Set<String> = []
     @Published var state: ViewState = .loading
     
-    private let loader = SubmissionLoader()
+//    private let loader = SubmissionLoader()
+    private let repository = SubmissionRepository()
     private let reviewedStore = ReviewedStore()
     
     var filteredSubmissions: [Submission] {
@@ -35,26 +36,44 @@ final class SubmissionListViewModel: ObservableObject {
     
     func loadSubmissions() {
         state = .loading
+        
+        Task{
+            do {
+//                let rawSubmissions = try loader.load()
+//
+//                submissions = rawSubmissions.map {
+//                    Submission(raw: $0)
+//                }
 
-        do {
-            let rawSubmissions = try loader.load()
+                submissions = try await repository.getSubmissions()
 
-            submissions = rawSubmissions.map {
-                Submission(raw: $0)
+                reviewedIDs = reviewedStore.reviewedIDs()
+
+                state = submissions.isEmpty ? .empty : .loaded
+
+            } catch let error as URLError {
+                
+                switch error.code {
+                case .notConnectedToInternet:
+                    state = .offline
+                default:
+                    state = .error(error.localizedDescription)
+                }
             }
-
-            reviewedIDs = reviewedStore.reviewedIDs()
-
-            state = submissions.isEmpty ? .empty : .loaded
-
-        } catch {
-            errorMessage = error.localizedDescription
-            state = .error(error.localizedDescription)
+            catch {
+                errorMessage = error.localizedDescription
+                state = .error(error.localizedDescription)
+            }
         }
     }
+    
     
     func markReviewed(_ submission: Submission) {
         reviewedStore.markReviewed(id: submission.id)
         reviewedIDs = reviewedStore.reviewedIDs()
+    }
+    
+    func retry() {
+        loadSubmissions()
     }
 }

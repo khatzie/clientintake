@@ -43,7 +43,7 @@ struct SubmissionListView: View {
                             NavigationLink {
                                 SubmissionDetailView(
                                     submission: submission,
-                                    isReviewed: viewModel.reviewedIDs.contains(submission.id)
+                                    viewModel: viewModel
                                 )
                             } label: {
                                 SubmissionRowView(
@@ -53,6 +53,12 @@ struct SubmissionListView: View {
                             }
                         }
                     }
+                case .offline:
+                    OfflineStateView(
+                        retryAction: {
+                            viewModel.retry()
+                        }
+                    )
                 }
             }
             .navigationTitle("Client Intake")
