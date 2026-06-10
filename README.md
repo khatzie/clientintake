@@ -27,7 +27,7 @@ No additional configuration is required.
 
 ## Features
 #### Core Features
-- Load submissions from bundled JSON
+- Load submissions from given API URL ``https://wwexam.free.beeceptor.com/api/submissions``
 - Display submissions in a searchable list
 - Search by:
   - Name
@@ -37,7 +37,7 @@ No additional configuration is required.
 - View detailed submission information
 - Mark submissions as reviewed
 - Persist reviewed state locally using UserDefaults
-- Loading, Empty, and Error states
+- Loading, Empty, Offline, No Results, and Error states
 - Graceful handling of malformed data
 
 ## Testing
