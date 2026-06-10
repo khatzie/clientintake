@@ -184,10 +184,17 @@ App
 │   └── ViewState.swift
 │
 ├── Services
-│   └── SubmissionLoader.swift
+│   ├── SubmissionLoader.swift
+│   ├── SubmissionRepository.swift
+│   └── SubmissionLoader.swift // Not Use but retain for reference
+│
+├── Networking
+│   ├── APIClient.swift
+│   ├── Endpoint.swift
+│   └── NetworkError.swift
 │
 ├── Resources
-│   └── submissions.json
+│   └── submissions.json // Not Use but retain for reference
 │
 ├── Utilities
 │   ├── DateParser.swift
@@ -212,10 +219,11 @@ States:
 - Loaded
 - Empty
 - No Results
+- Offline
 - Error
 
 Flow:
-1. Load JSON
+1. Load API URL
 2. Decode records
 3. Normalize records
 4. Display list
@@ -264,6 +272,8 @@ Manual tests are required. Automated tests are optional.
 | Empty State | Replace the JSON content with [] | "No Submissions" state is displayed | Yes|
 | Missing JSON File | Rename or remove submissions.json from the bundle | Error state is displayed | Yes|
 | Invalid JSON | Corrupt the JSON file contents | Error state is displayed | Yes|
+| Offline State | Turn of Wifi or Internet of Device or Simulator | Offline state  with retry button is displayed | Yes|
+| Retry | Turn on again your Wifi or Internet, click the retry button | It should load all data from API | Yes|
 
 ---
  
